@@ -15,7 +15,7 @@ export default function Header() {
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
-            Clipped drawer
+            Users
           </Typography>
         </Toolbar>
       </AppBar>

@@ -1,6 +1,5 @@
-import Table from "@/components/atoms/Table/Table";
-import Header from "@/components/molecules/Header/Header";
-import { Box } from "@mui/material";
+import Header from "@/components/templates/Header/Header";
+import { UserTable } from "@/components/templates/UsersTable/UsersTable";
 import Head from "next/head";
 
 export default function Home() {
@@ -13,9 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <Box component="main" sx={{ p: 3 }}>
-        <Table />
-      </Box>
+      <UserTable />
     </>
   );
 }

@@ -4,6 +4,9 @@ import { AppProps } from "next/app";
 import { AppCacheProvider } from "@mui/material-nextjs/v15-pagesRouter";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Roboto } from "next/font/google";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -18,16 +21,18 @@ const theme = createTheme({
   },
 });
 
-export default function MyApp(props: AppProps) {
+export default function App(props: AppProps) {
   const { Component, pageProps } = props;
   return (
     <AppCacheProvider {...props}>
-      <Head>...</Head>
-      <ThemeProvider theme={theme}>
-        <main className={roboto.variable}>
-          <Component {...pageProps} />
-        </main>
-      </ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <Head>...</Head>
+        <ThemeProvider theme={theme}>
+          <main className={roboto.variable}>
+            <Component {...pageProps} />
+          </main>
+        </ThemeProvider>
+      </QueryClientProvider>
     </AppCacheProvider>
   );
 }
