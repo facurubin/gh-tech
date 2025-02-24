@@ -4,8 +4,14 @@ import AppBar from "@mui/material/AppBar";
 import CssBaseline from "@mui/material/CssBaseline";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import { FC, PropsWithChildren } from "react";
+import { HeaderProps } from "./types";
+import { SearchHeader } from "@/components/molecules/SearchHeader/SearchHeader";
 
-export default function Header() {
+export const Header: FC<PropsWithChildren<HeaderProps>> = ({
+  title,
+  children,
+}) => {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -14,11 +20,18 @@ export default function Header() {
         sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
       >
         <Toolbar>
-          <Typography variant="h6" noWrap component="div">
-            Users
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+          >
+            {title}
           </Typography>
+          {children}
+          <SearchHeader />
         </Toolbar>
       </AppBar>
     </Box>
   );
-}
+};

@@ -1,4 +1,4 @@
-import Header from "@/components/templates/Header/Header";
+import { Header } from "@/components/organisms/Header/Header";
 import { UserTable } from "@/components/templates/UsersTable/UsersTable";
 import Head from "next/head";
 
@@ -11,7 +11,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
+      <Header title="Github users" />
       <UserTable />
     </>
   );

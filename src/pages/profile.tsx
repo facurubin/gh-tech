@@ -1,4 +1,4 @@
-import Header from "@/components/templates/Header/Header";
+import { Header } from "@/components/organisms/Header/Header";
 import Head from "next/head";
 
 export default function Profile() {
@@ -10,7 +10,7 @@ export default function Profile() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
+      <Header title="Github users" />
     </>
   );
 }
