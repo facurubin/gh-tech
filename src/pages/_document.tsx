@@ -3,10 +3,12 @@ import {
   DocumentHeadTags,
   DocumentHeadTagsProps,
   documentGetInitialProps,
-} from '@mui/material-nextjs/v15-pagesRouter';
+} from "@mui/material-nextjs/v15-pagesRouter";
 import { JSX } from "react";
 
-export default function Document(props: JSX.IntrinsicAttributes & DocumentHeadTagsProps) {
+export default function Document(
+  props: JSX.IntrinsicAttributes & DocumentHeadTagsProps,
+) {
   return (
     <Html lang="en">
       <Head>
@@ -19,7 +21,6 @@ export default function Document(props: JSX.IntrinsicAttributes & DocumentHeadTa
     </Html>
   );
 }
-
 
 Document.getInitialProps = async (ctx: DocumentContext) => {
   const finalProps = await documentGetInitialProps(ctx);
