@@ -8,7 +8,7 @@ export const usersService = {
     return httpProvider.get("users");
   },
   search: (term: string) => {
-    return httpProvider.get(`users?q=${term}`);
+    return httpProvider.get(`search/users?q=${term}`);
   },
   getByUsername: (username: string) => {
     return httpProvider.get(`users/${username}`);

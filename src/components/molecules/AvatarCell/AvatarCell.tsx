@@ -1,6 +1,7 @@
-import { Avatar, TableCell } from "@mui/material";
+import { TableCell } from "@mui/material";
 import { AvatarCellProps } from "./types";
 import { FC } from "react";
+import { Avatar } from "@/components/atoms/Avatar/Avatar";
 
 export const AvatarCell: FC<AvatarCellProps> = ({ user }) => {
   return (
