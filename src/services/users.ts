@@ -10,7 +10,8 @@ export const usersService = {
   search: (term: string) => {
     return httpProvider.get(`search/users?q=${term}`);
   },
-  getByUsername: (username: string) => {
-    return httpProvider.get(`users/${username}`);
+  getByUsername: async (username: string) => {
+    const { data } = await httpProvider.get(`users/${username}`);
+    return data;
   },
 };
