@@ -13,7 +13,7 @@ export const Header: FC<PropsWithChildren<HeaderProps>> = ({
   children,
 }) => {
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex" }} data-testid="header">
       <CssBaseline />
       <AppBar
         position="static"

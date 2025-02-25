@@ -9,7 +9,7 @@ export const UserProfile: FC<UserProfileProps> = ({
   repositories,
 }) => {
   return (
-    <Box component="main" display="flex">
+    <Box component="main" display="flex" data-testid="profile-section">
       <RepositoriesSections repositories={repositories} />
       <ProfileSection profile={profile} />
     </Box>
