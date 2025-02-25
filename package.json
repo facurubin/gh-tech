@@ -35,7 +35,7 @@
     "nextjs-progressbar": "0.0.16",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "throttle-debounce": "5.0.2"
+    "use-debounce": "^10.0.4"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -46,7 +46,6 @@
     "@types/node": "22.13.5",
     "@types/react": "^19.0.4",
     "@types/react-dom": "^19.0.4",
-    "@types/throttle-debounce": "^5.0.2",
     "eslint": "^9.21.0",
     "eslint-config-next": "15.1.7",
     "husky": "^9.1.7",
@@ -55,7 +54,7 @@
     "lint-staged": "^15.4.3",
     "prettier": "^3.5.2",
     "ts-node": "^10.9.2",
-    "node-notifier":"^10.0.1",
+    "node-notifier": "^10.0.1",
     "typescript": "^5.7.3"
   }
 }
