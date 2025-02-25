@@ -20,15 +20,16 @@ export const Header: FC<PropsWithChildren<HeaderProps>> = ({
         sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
       >
         <Toolbar>
+          {children}
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            sx={{ display: { xs: "none", sm: "block" } }}
           >
             {title}
           </Typography>
-          {children}
+          <Box sx={{ flexGrow: 1 }} />
           <SearchHeader />
         </Toolbar>
       </AppBar>

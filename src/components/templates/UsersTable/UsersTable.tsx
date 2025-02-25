@@ -8,13 +8,18 @@ import { NameCell } from "@/components/molecules/NameCell/NameCell";
 import { FavoriteButtonCell } from "@/components/molecules/FavoriteButtonCell/FavoriteButtonCell";
 import { IUsers } from "@/models/Users";
 import { useRouter } from "next/router";
+import { Loader } from "@/components/atoms/Loader/Loader";
 
 const headers = ["", "Avatar", "Username", "Type", "Link Profile"];
 
 export const UserTable = () => {
   const router = useRouter();
   const term = (router.query?.q as string) ?? "";
-  const { users } = useListUsers(term);
+  const { users, isLoading } = useListUsers(term);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <Box component="main" sx={{ p: 3 }}>

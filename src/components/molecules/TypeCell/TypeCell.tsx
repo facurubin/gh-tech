@@ -4,7 +4,7 @@ import { FC } from "react";
 
 export const TypeCell: FC<TypeCellProps> = ({ user }) => {
   return (
-    <TableCell align="center">
+    <TableCell>
       <Chip label={user.type} color="primary" variant="outlined" />
     </TableCell>
   );

@@ -17,7 +17,7 @@ export const Table: FC<PropsWithChildren<TableProp>> = ({
   children,
 }) => {
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} elevation={6}>
       <MuiTable>
         <TableHead>
           <TableRow>

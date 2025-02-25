@@ -5,8 +5,17 @@ import { usersService } from "@/services/users";
 import { GetServerSideProps } from "next";
 import { isAxiosError } from "axios";
 import Head from "next/head";
+import { IProfile } from "@/models/Users";
+import { Repository } from "@/models/Repository";
+import { FC } from "react";
+import { BackButton } from "@/components/atoms/BackButton/BackButton";
 
-export default function Profile({ profile }) {
+interface Props {
+  profile: IProfile;
+  repositories: Repository[];
+}
+
+const Profile: FC<Props> = ({ profile, repositories }) => {
   return (
     <>
       <Head>
@@ -15,11 +24,15 @@ export default function Profile({ profile }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header title="Github users" />
-      <UserProfile profile={profile} />
+      <Header title="Github users">
+        <BackButton />
+      </Header>
+      <UserProfile profile={profile} repositories={repositories} />
     </>
   );
-}
+};
+
+export default Profile;
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const jsonRedirect = {
@@ -33,16 +46,15 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     return jsonRedirect;
   }
   try {
-    const [user, repositories] = await Promise.all([
+    const [profile, repositories] = await Promise.all([
       usersService.getByUsername(username),
       repositoriesService.listByUsername(username),
     ]);
-    if (!user || !repositories) {
+    if (!profile || !repositories) {
       return jsonRedirect;
     }
 
-    const profile = { user, repositories };
-    return { props: { profile } };
+    return { props: { profile, repositories } };
   } catch (error) {
     if (isAxiosError(error)) {
       console.error(error.response);

@@ -7,7 +7,9 @@ import { IUsers } from "@/models/Users";
 export const useListUsers = (term = "") => {
   const isSearchingUsers = term?.length > 0;
 
-  const { data: listUsersRaw = [], isLoading } = useQuery<ListGHUsers[]>({
+  const { data: listUsersRaw = [], isLoading: isLoadingListUsers } = useQuery<
+    ListGHUsers[]
+  >({
     queryKey: ["list-users"],
     queryFn: async () => {
       const { data } = await usersService.list();
@@ -16,15 +18,18 @@ export const useListUsers = (term = "") => {
     enabled: !isSearchingUsers,
   });
 
-  const { data: searchUsersRaw = [], isFetched: isFetchedSearchUsers } =
-    useQuery<ListGHUsers[]>({
-      queryKey: ["search-users", term],
-      queryFn: async () => {
-        const { data } = await usersService.search(term);
-        return data?.items;
-      },
-      enabled: isSearchingUsers,
-    });
+  const {
+    data: searchUsersRaw = [],
+    isFetched: isFetchedSearchUsers,
+    isLoading: isLoadingSearchUsers,
+  } = useQuery<ListGHUsers[]>({
+    queryKey: ["search-users", term],
+    queryFn: async () => {
+      const { data } = await usersService.search(term);
+      return data?.items;
+    },
+    enabled: isSearchingUsers,
+  });
 
   const users = useMemo<IUsers[]>(() => {
     const userRaw = isFetchedSearchUsers ? searchUsersRaw : listUsersRaw;
@@ -36,6 +41,8 @@ export const useListUsers = (term = "") => {
       url,
     }));
   }, [listUsersRaw, isFetchedSearchUsers, searchUsersRaw]);
+
+  const isLoading = isLoadingListUsers || isLoadingSearchUsers;
 
   return { users, isLoading };
 };
